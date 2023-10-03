@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Block Example</title>
+    <style>
+        /* CSS for styling and hiding the content */
+        .toggle-container {
+            margin: 100px;
+            padding: 200px;
+            border: 10px solid #ccc;
+            background-color: #f5f5f5;
+        }
+
+     .bigger-image {
+            width: 400px;
+            height: 300px;
+        }
+
+        /* Define a CSS class for smaller images */
+        .smaller-image {
+            width: 200px;
+            height: 150px;
+        }
+
+        /* Define a CSS class for images that fit their container width */
+        .fit-container-width {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Compound selector targeting a specific image with multiple classes */
+        .bigger-image.fit-container-width {
+            /* Combine the properties of both classes */
+            max-width: 400px; /* Maximum width for fitting container */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Another compound selector example */
+        .smaller-image.fit-container-width {
+            max-width: 200px;
+            height: auto;
+        }
+        }
+
+        /* Define a CSS class for images that fit their container width */
+        .fit-container-width {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Compound selector targeting a specific image with multiple classes */
+        .bigger-image.fit-container-width {
+            /* Combine the properties of both classes */
+            max-width: 400px; /* Maximum width for fitting container */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Another compound selector example */
+        .smaller-image.fit-container-width {
+            max-width: 200px;
+            height: auto;
+        }
+
+        /* Define a CSS class for images that fit their container width */
+        .fit-container-width {
+            max-width: 100%;
+            height: auto;
+        }
+      
+        .toggle-content {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f5f5f5; /* White background */
+        }
+
+        /* Styling for the toggle button */
+        .toggle-button {
+            cursor: pointer;
+            color: RED;
+            text-decoration: underline;
+            display: flex;
+            align-items: center; /* Center vertically */
+        }
+
+        .button-icon {
+            width: 300px; /* Set the width of the image */
+            height: 265px; /* Set the height of the image */
+            margin-right: 30px; /* Add some spacing between the image and text */
+        }
+
+        /* Styling for headings and links */
+        h2 {
+            color: #007acc; /* Blue color */
+        }
+
+        a {
+            color: #ff7700; /* Orange color */
+            text-decoration: none;
+          text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+  
+    <!-- Apply the "bigger-image" class to make this image bigger -->
+    <img src="data:image/jpeg;base64,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" alt="Bigger Image" class="bigger-image">
+
+    <!-- Apply the "smaller-image" class to make this image smaller -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Color_circle_%28hue-sat%29.png/310px-Color_circle_%28hue-sat%29.png" alt="Smaller Image" class="smaller-image">
+
+    <!-- Apply the "fit-container-width" class to make this image fit its container width -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt1z58nLg6ckPcD3zREBV8x6sskGxoUSbFqg&usqp=CAU" alt="Fit Container Width" class="fit-container-width">
+
+    <!-- Example of a compound selector targeting a specific image -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt1z58nLg6ckPcD3zREBV8x6sskGxoUSbFqg&usqp=CAU" alt="Bigger Image Fit" class="bigger-image fit-container-width">
+</body>
+<body>
+    <div class="toggle-container">
+        <h2>The Meaning and History of Memes</h2>
+      
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p class="toggle-content">This is some hidden information that can be toggled.</p>
+        <p class="toggle-content">Where does the word “meme” come from?
+
+The word “meme” has been used in the New York Times Crossword 60 times since the puzzle’s inception in the 1940s, according to XWordInfo. Although it’s difficult to identify the first meme ever, the British evolutionary biologist Richard Dawkins is credited with introducing the term in his 1976 book, “The Selfish Gene.” In Mr. Dawkins’s original conception, a “meme” was analogous to a “phoneme,” the smallest unit of sound in speech, or a “morpheme,” the smallest meaningful subunit of a word, Kirby Conrod, a professor of linguistics at Swarthmore College, said. “I would explain the concept of a meme — a self-replicating chunk of information — by asking someone about an inside joke they had with friends or an advertising jingle that’s been stuck in their head for 20 years,” Professor Conrod said. “That chunk of information, the joke or the jingle, self-replicates because we humans like to share and repeat stuff. When we repeat the joke, or sing the jingle, that’s an instance of the meme reproducing itself.” The word “meme” first appeared in the New York Times Crossword in 1953 with the clue “Same: French.” Its most recent appearance was on Dec. 24, 2021, with the clue “Something that gets passed around a lot.”.</p>
+        <p class="toggle-content">Ingredients for a good meme
+
+Noteworthy pop culture events are breeding grounds for meme creation. In fact, this year, Instagram hired Saint Hoax to cover the Met Gala as its first-ever meme correspondent, knowing that interesting, culturally relevant content would come from the event and spread on social platforms. “Memes are basically editorial cartoons for the internet age,” Saint Hoax said. “The power of a meme lies in its transmissibility and unique knack for being cross-cultural.” And memes have the uncanny ability to capture a moment while distracting people from reality. They encapsulate the era we are living in while also reminding us that it’s not all that serious, Lola Tash, one of the founders of the meme account My Therapist Says, said.
+
+Memes are shareable by nature. “In a world where you are scrolling through news feeds for hours a day, the meme format catches your eye, and most of them can be read and understood within seconds,” said Samir Mezrahi, the deputy director of social media at BuzzFeed, who also runs Kale Salad, a meme account with nearly four million followers.
+
+Creating and sharing memes facilitates a sense of community online while maintaining a feeling of exclusivity. “Memes bring people together through humor and can act as a catalyst for creating social or political commentary,” said Kit Chilvers, the chief executive and founder of Pubity Group, a collection of social media accounts that has more than 80 million total followers. “Often, memes can be quite exclusive, as only people who are familiar with the origin of the meme will understand it,” Chilvers added.</p>
+        <p class="toggle-content">Toggle it on/off by clicking the button below.</p>
+        <button class="toggle-button" onclick="toggleContent()">
+            <img src="https://i.imgflip.com/3w5h44.png?a470976" alt="Image Inside Button" class="button-icon">
+            Toggle
+        </button>
+        <img src="https://scontent.ffru2-1.fna.fbcdn.net/v/t1.6435-9/35347259_213426292605171_592828060919660544_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9267fe&_nc_ohc=PjmHmzSQXogAX8wTJLF&_nc_ht=scontent.ffru2-1.fna&oh=00_AfDS3q9DmDIrc7CPSyht6myPxdq0CcsQ4o-XkSuMDYsLmg&oe=65432593" alt="Image After Toggle" width="500" height="450">
+    </div>
+
+    <script>https://scontent.ffru2-1.fna.fbcdn.net/v/t1.6435-9/35347259_213426292605171_592828060919660544_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=9267fe&_nc_ohc=PjmHmzSQXogAX8wTJLF&_nc_ht=scontent.ffru2-1.fna&oh=00_AfDS3q9DmDIrc7CPSyht6myPxdq0CcsQ4o-XkSuMDYsLmg&oe=65432593
+        // JavaScript for toggling the content
+        function toggleContent() {
+            const contentElements = document.querySelectorAll('.toggle-content');
+
+            contentElements.forEach((element) => {
+                if (element.style.display === 'none' || element.style.display === '') {
+                    element.style.display = 'block';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
